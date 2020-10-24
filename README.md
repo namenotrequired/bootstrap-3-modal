@@ -2,7 +2,15 @@ bootstrap-3-modal
 =================
 A Meteor package making it easy to use bootstrap 3 modals in Meteor.
 
-## Forked from peppelg:bootstrap-3-modal
+## Differences with the original (peppelg:bootstrap-3-modal)
+
+This was forked from peppelg:bootstrap-3-modal. The main differences are
+
+- Our `hide` method takes no arguments; it always hides whatever modal is currently shown, if any
+- If a modal is opened while a previous is already opened, instead of ignoring the request, we hide the original and show the new one
+- This one does not support multiple modals
+
+## How to use
 
 **Note 1:** In order for this package to work, you must include bootstrap 3 in
 your meteor project. You can add bootstrap 3 to your project by adding the
