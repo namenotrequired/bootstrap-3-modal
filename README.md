@@ -26,25 +26,25 @@ To define your own modals, simply define new templates containing your modals
 
 ```html
 <template name="exampleModal">
-	<div class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				
-				<div class="modal-header">
-					<h4 class="modal-title">Modal example</h4>
-				</div>
-				
-				<div class="modal-body">
-					<p>A modal example.</p>
-				</div>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				
-			</div>
-		</div>
-	</div>
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Modal example</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>A modal example.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </template>
 ```
 
@@ -56,10 +56,10 @@ No modal is shown (or even inserted into the DOM) by default. By calling
 
 ```javascript
 Meteor.startup(function(){
-	// Show the example modal 3 seconds after startup.
-	setTimeout(function(){
-		Modal.show('exampleModal')
-	}, 3000)
+  // Show the example modal 3 seconds after startup.
+  setTimeout(function(){
+    Modal.show('exampleModal')
+  }, 3000)
 })
 ```
 
@@ -70,9 +70,9 @@ context for the template (works as the `data` parameter for
 
 Please note that in order to render your data reactively, `<dataContext>` must be a function that returns reactive object:
 ```javascript
-	Modal.show('exampleModal', function () {
-		return MyCollection.findOne(itemId);
-	});
+  Modal.show('exampleModal', function () {
+    return MyCollection.findOne(itemId);
+  });
 })
 ```
 
@@ -83,8 +83,8 @@ dialog when the user clicks outside of it, you'd pass
 
 ```javascript
 {
-	backdrop: 'static'
-	keyboard: false
+  backdrop: 'static'
+  keyboard: false
 }
 ```
 
@@ -108,15 +108,15 @@ insertions of multiple modals, just set `Modal.allowMultiple` to `true`:
 Modal.allowMultiple = true
 
 Meteor.startup(function(){
-	
-	// Show the example modal directly on startup...
-	Modal.show('exampleModal')
-	
-	// ...and also 3 seconds later, even if the first one hasn't been closed.
-	setTimeout(function(){
-		Modal.show('exampleModal')
-	}, 3000)
-	
+
+  // Show the example modal directly on startup...
+  Modal.show('exampleModal')
+
+  // ...and also 3 seconds later, even if the first one hasn't been closed.
+  setTimeout(function(){
+    Modal.show('exampleModal')
+  }, 3000)
+
 })
 ```
 
