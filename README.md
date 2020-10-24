@@ -2,7 +2,8 @@ bootstrap-3-modal
 =================
 A Meteor package making it easy to use bootstrap 3 modals in Meteor.
 
-## Differences with the original (peppelg:bootstrap-3-modal)
+Differences with the original (peppelg:bootstrap-3-modal)
+-----
 
 This was forked from peppelg:bootstrap-3-modal. The main differences are
 
@@ -10,23 +11,18 @@ This was forked from peppelg:bootstrap-3-modal. The main differences are
 - If a modal is opened while a previous is already opened, instead of ignoring the request, we hide the original and show the new one
 - This one does not support multiple modals
 
-## How to use
-
-**Note 1:** In order for this package to work, you must include bootstrap 3 in
-your meteor project. You can add bootstrap 3 to your project by adding the
-package `twbs:bootstrap`:
-
-```
-meteor add twbs:bootstrap
-```
-
-This package does not include `twbs:bootstrap` automatically (in case you
-have included bootstrap 3 in another way).
-
+Install
+-----
 Include this package with:
 
 ```
 meteor add bartoftutormundi:bootstrap-3-modal
+```
+
+**Note 1:** This package does not include bootstrap automatically. In order for this package to work, you must include bootstrap 3 in your meteor project. If you aren't using it yet, one way to add bootstrap 3 to your project is by adding the package `twbs:bootstrap`:
+
+```
+meteor add twbs:bootstrap
 ```
 
 Usage
