@@ -1,6 +1,6 @@
 Package.describe({
   summary: 'Simple usage of bootstrap 3 modals',
-  version: '2.0.1',
+  version: '2.0.2',
   name: 'bartoftutormundi:bootstrap-3-modal',
   git: 'https://github.com/namenotrequired/bootstrap-3-modal.git',
 });

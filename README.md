@@ -27,8 +27,7 @@ meteor add twbs:bootstrap
 
 Usage
 -----
-To define your own modals, simply define new templates containing your modals
-(**important**: your modals must have the class `modal`):
+To define your own modals, simply define new templates containing your modals (**important**: your modals must have the class `modal`):
 
 ```html
 <template name="exampleModal">
@@ -54,11 +53,9 @@ To define your own modals, simply define new templates containing your modals
 </template>
 ```
 
-Modal templates can be used as ordinary templates in Meteor (`created`,
-`helpers`, `rendered`, `events` and `destroyed` all works as you're used to).
+Modal templates can be used as ordinary templates in Meteor (`onCreated`, `helpers`, `onRendered`, `events` and `onDestroyed` all work as you're used to).
 
-No modal is shown (or even inserted into the DOM) by default. By calling
-`Modal.show(<templateName>)`, the modal is inserted into the DOM and shown.
+No modal is shown (or even inserted into the DOM) by default. By calling `Modal.show(<templateName>)`, the modal is inserted into the DOM and shown.
 
 ```javascript
 Meteor.startup(function(){
@@ -69,10 +66,7 @@ Meteor.startup(function(){
 })
 ```
 
-If a second argument is passed to `Modal.show`
-(`Modal.show(<templateName>, <dataContext>)`), it will be used as the data
-context for the template (works as the `data` parameter for
-[Blaze.renderWithData](http://docs.meteor.com/#/full/blaze_renderwithdata)).
+If a second argument is passed to `Modal.show` (`Modal.show(<templateName>, <dataContext>)`), it will be used as the data context for the template (works as the `data` parameter for [Blaze.renderWithData](http://docs.meteor.com/#/full/blaze_renderwithdata)).
 
 Please note that in order to render your data reactively, `<dataContext>` must be a function that returns reactive object:
 ```javascript
@@ -81,10 +75,7 @@ Please note that in order to render your data reactively, `<dataContext>` must b
   });
 ```
 
-A third argument can be passed to `Modal.show`
-(`Modal.show(<templateName>, <dataContext>, <modalOptions>)`). It will be used as the `options`
-(only) parameter to the modal() call. For example, if you want to disable closing the modal
-dialog when the user clicks outside of it, you'd pass
+A third argument can be passed to `Modal.show` (`Modal.show(<templateName>, <dataContext>, <modalOptions>)`). It will be used as the `options` (only) parameter to the modal() call. For example, if you want to disable closing the modal dialog when the user clicks outside of it, you'd pass
 
 ```javascript
 {
@@ -93,8 +84,7 @@ dialog when the user clicks outside of it, you'd pass
 }
 ```
 
-The modal can be removed by calling `Modal.hide()` (or by using the other ways
-to remove modals in bootstrap).
+The modal can be removed by calling `Modal.hide()`.
 
 Opening a new modal closes the previous
 ---------------------
@@ -107,9 +97,3 @@ Bootstrap does not support showing multiple modals at a time:
 
 Instead, if a modal is open when you open another one, the previous will be closed.
 
-Examples
---------
-At the moment there is one sign up modal and one sign in modal in the directory
-`examples`. When a proper way to do this in Meteor (settings min password
-length, and things like that) exists in Meteor, I will probably create a
-package like accounts-ui, but with modals instead.
