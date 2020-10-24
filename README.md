@@ -2,6 +2,8 @@ bootstrap-3-modal
 =================
 A Meteor package making it easy to use bootstrap 3 modals in Meteor.
 
+## Forked from peppelg:bootstrap-3-modal
+
 **Note 1:** In order for this package to work, you must include bootstrap 3 in
 your meteor project. You can add bootstrap 3 to your project by adding the
 package `twbs:bootstrap`:
@@ -16,7 +18,7 @@ have included bootstrap 3 in another way).
 Include this package with:
 
 ```
-meteor add peppelg:bootstrap-3-modal
+meteor add bartoftutormundi:bootstrap-3-modal
 ```
 
 Usage
@@ -73,7 +75,6 @@ Please note that in order to render your data reactively, `<dataContext>` must b
   Modal.show('exampleModal', function () {
     return MyCollection.findOne(itemId);
   });
-})
 ```
 
 A third argument can be passed to `Modal.show`
@@ -91,7 +92,7 @@ dialog when the user clicks outside of it, you'd pass
 The modal can be removed by calling `Modal.hide()` (or by using the other ways
 to remove modals in bootstrap).
 
-Using multiple modals
+Opening a new modal closes the previous
 ---------------------
 As written in [the documentation for Bootstrap](http://getbootstrap.com/javascript/#modals),
 Bootstrap does not support showing multiple modals at a time:
@@ -100,29 +101,7 @@ Bootstrap does not support showing multiple modals at a time:
 
 > Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
 
-This package does not contain any "custom code" for showing multiple modals at
-a time, but it is not limited to only inserting one modal at a time. To enable
-insertions of multiple modals, just set `Modal.allowMultiple` to `true`:
-
-```javascript
-Modal.allowMultiple = true
-
-Meteor.startup(function(){
-
-  // Show the example modal directly on startup...
-  Modal.show('exampleModal')
-
-  // ...and also 3 seconds later, even if the first one hasn't been closed.
-  setTimeout(function(){
-    Modal.show('exampleModal')
-  }, 3000)
-
-})
-```
-
-To remove a modal, you need to pass the modal's template instance as
-the first argument to `Modal.hide`. Usually, this is done in an event handler,
-where the template instance is provided as the second argument.
+Instead, if a modal is open when you open another one, the previous will be closed.
 
 Examples
 --------
