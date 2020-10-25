@@ -7,8 +7,9 @@ Differences with the original (peppelg:bootstrap-3-modal)
 
 This was forked from peppelg:bootstrap-3-modal. The main differences are
 
+- Adds a reactive `.get()` method; returns the jQuery object of the existing modal (plus a `name` property with the name of the template), or if there is none, `null`
 - Our `hide` method takes no arguments; it always hides whatever modal is currently shown, if any
-- If a modal is opened while a previous is already opened, instead of ignoring the request, we hide the original and show the new one
+- If a modal is shown while a previous modal is already shown, instead of ignoring the request, we hide the original and show the new one
 - This one does not support multiple modals
 
 Install
