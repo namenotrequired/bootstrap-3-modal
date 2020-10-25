@@ -1,10 +1,12 @@
-let $currentModal;
+const currentModal = new ReactiveVar(null);
 
 // The public API.
 Modal = {
+  get: () => currentModal.get(),
+
   show: (templateName, data, options = {}) => {
     // If there is a shown modal, hide it
-    if ($currentModal) {
+    if (currentModal.get()) {
       Modal.hide();
     };
 
@@ -25,21 +27,22 @@ Modal = {
       Blaze.remove(view);
     });
 
-    $currentModal = $modal;
+    $modal.name = templateName;
 
-    $currentModal.name = templateName;
+    currentModal.set($modal);
 
     $modal.modal(options);
   },
 
   hide: () => {
+    const $currentModal = currentModal.get();
     if (!$currentModal) return;
 
     const { name = '' } = $currentModal;
 
     $currentModal.modal('hide');
 
-    $currentModal = null;
+    currentModal.set(null);
 
     return name;
   },

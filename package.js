@@ -1,6 +1,6 @@
 Package.describe({
   summary: 'Simple usage of bootstrap 3 modals',
-  version: '2.0.2',
+  version: '2.1.0',
   name: 'bartoftutormundi:bootstrap-3-modal',
   git: 'https://github.com/namenotrequired/bootstrap-3-modal.git',
 });
@@ -11,6 +11,7 @@ Package.onUse((api) => {
   api.use([
     'templating',
     'jquery',
+    'reactive-var',
   ], 'client');
 
   api.addFiles([
