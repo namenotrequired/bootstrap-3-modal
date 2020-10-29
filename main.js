@@ -1,12 +1,17 @@
-const currentModal = new ReactiveVar(null);
+const currentModalDep = new Tracker.Dependency();
+
+let currentModal;
 
 // The public API.
 Modal = {
-  get: () => currentModal.get(),
+  get: () => {
+    currentModalDep.depend();
+    return currentModal;
+  },
 
   show: (templateName, data, options = {}) => {
     // If there is a shown modal, hide it
-    if (currentModal.get()) {
+    if (currentModal) {
       Modal.hide();
     };
 
@@ -29,20 +34,21 @@ Modal = {
 
     $modal.name = templateName;
 
-    currentModal.set($modal);
+    currentModal = $modal;
+    currentModalDep.changed();
 
     $modal.modal(options);
   },
 
   hide: () => {
-    const $currentModal = currentModal.get();
-    if (!$currentModal) return;
+    if (!currentModal) return;
 
-    const { name = '' } = $currentModal;
+    const { name = '' } = currentModal;
 
-    $currentModal.modal('hide');
+    currentModal.modal('hide');
 
-    currentModal.set(null);
+    currentModal = null;
+    currentModalDep.changed();
 
     return name;
   },
